@@ -1,130 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Header from '../components/layouts/header'
+import Footer from '../components/layouts/footer'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <>
-      {/* header start here */}
-      <header className='py-4 shadow-sm bg-white'>
-        <div className="container flex justify-between items-center">
-          {/* logo */}
-          <div className=''>
-            <img src="/logo.svg" className='w-16 md:w-28' alt="" />
-          </div>
-          {/* search bar */}
-          <div className='w-full md:w-96 mx-w-xl flex pl-4 relative'>
-            <span className='pl-4 text-4xl absolute'>
-              <span className="material-symbols-outlined">manage_search</span>
-            </span>
-            <input type="text" className='w-full border border-primary py-2 hover:border-gray-300 ' name="" id="" />
-            <button className='bg-primary text-xl text-white border rounded px-4'>Search</button>
-          </div>
-
-          {/* icons */}
-
-          <div className="flex justify-center text-center gap-4">
-            <div className='hover:text-primary'>
-              <span className="material-symbols-outlined">
-                shopping_cart
-              </span>
-            </div>
-            <div className='hover:text-primary'>
-              <span className="material-symbols-outlined">
-                favorite
-              </span>
-            </div>
-            <div className='hover:text-primary'>
-              <span className="material-symbols-outlined">
-                person_filled
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* navbar */}
-      <nav className='bg-gray-600'>
-          <div className="container flex">
-            
-            {/* categories */}
-            <div className="px-8 py-4 text-white items-center bg-primary flex cursor-pointer relative group">
-              <span className="material-symbols-outlined">menu</span>
-              <span className='capitalize ml-2'>All Cateogry</span>
-
-              <div className='absolute w-full text-center left-0 top-full bg-white text-black shadow-md divide-y divide-gray-300 divide-dashed hidden group-hover:block '>
-
-                  <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                    <span className="material-symbols-outlined">menu_book</span>
-                      <span>Baby</span>
-                  </a>
-
-                  <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                    <span className="material-symbols-outlined">menu_book</span>
-                      <span>Baby</span>
-                  </a>
-
-                  <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                    <span className="material-symbols-outlined">menu_book</span>
-                      <span>Baby</span>
-                  </a>
-
-
-                  <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                    <span className="material-symbols-outlined">menu_book</span>
-                      <span>Baby</span>
-                  </a>
-
-                  <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                    <span className="material-symbols-outlined">menu_book</span>
-                      <span>Baby</span>
-                  </a>
-
-                  
-
-                  
-                  
-              </div>
-            </div>
-            {/* nav-menu */}
-            <div className='flex items-center justify-between'>
-                {/* menu */}
-                <div className='ml-4'>
-                  <ul className='flex items-center gap-4 text-white '>
-                    <li>
-                      <a href="">Home</a>
-                    </li>
-                    <li>
-                      <a href="">Shop</a>
-                    </li>
-                    <li>
-                      <a href="">About</a>
-                    </li>
-                    <li>
-                      <a href="">Contact</a>
-                    </li>
-                  </ul>
-                </div>
-                {/* account infor */}
-                <div className='ml-4'>
-                  <ul className='flex items-center gap-4 text-white'>
-                    <li>
-                      <a href="">Login</a>
-                    </li>
-                    <li>
-                      <a href="">Register</a>
-                    </li>
-                  </ul>
-                </div>
-                
-            </div>
-
-          </div>
-      </nav>
-      {/* header end here */}
+    <Header></Header>
+      
 
       {/* banner start here */}
         <div className='py-28'  style={{
@@ -138,7 +20,7 @@ export default function Home() {
            <div className=''>
            <h2 className='text-4xl text-gray-600 mb-4 my-auto'>Best collection for <br /> Home decoration</h2>
             <p className='text-base'>Lorem Ipsum is simply dummy text of the printing <br /> and typesetting industry.</p>
-            <button className='bg-primary border-gray-100 px-8 py-2 text-white rounded-sm mt-2'>Shop now</button>
+            <button className='bg-primary border-gray-100 px-8 py-2 text-white rounded-sm mt-8'>Shop now</button>
            </div>
           </div>
         </div>
@@ -357,6 +239,11 @@ export default function Home() {
           </div>
       </div>
 
+      {/* banner section */}
+      <div className="container my-20">
+        <img className='w-full' src="/banner_1.jpg" alt="" />
+      </div>
+
 
       {/* regular product */}
       <div className='container my-8'>
@@ -483,77 +370,7 @@ export default function Home() {
           </div>
       </div>
 
-      {/* footer area */}
-      <div className='bg-gray-100'>
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
-            {/* compnay description */}
-            <div className='my-8'>
-              <img src="/logo.svg" alt="" />
-              <p className='my-6 text-gray-600'>Lorem ipsum, or lipsum as it is sometimes kno wn, is dummy text used in laying out print, gra phic or web designs the passage.</p>
-              <h2>NEWSLATTER</h2>
-              <div className='flex'>
-                <input type="text" className='w-full py-2 border-gray-400 rounded border px-2' placeholder='your email address' name="" id="" />
-                <button className='bg-primary px-4 text-white font-bold text-sm rounded-md'>SUBSCRIB</button>
-              </div>
-            </div>
-            {/* my account */}
-            <div className='my-8'>
-              <h2 className='text-xl text-black uppercase '>My account</h2>
-              <ul className='my-4'>
-                <li className='my-2'>
-                  <a href="" className=''>Order</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>Wishlist</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>Track Order</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>Manage account</a>
-                </li>
-              </ul>
-            </div>
-            {/* information */}
-            <div className='my-8'>
-              <h2 className='text-xl text-black uppercase '>information</h2>
-              <ul className='my-4'>
-                <li className='my-2'>
-                  <a href="" className=''>About us</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>Return policy</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>Trams & condition</a>
-                </li>
-                <li className='my-2'>
-                  <a href="" className=''>FAQ</a>
-                </li>
-              </ul>
-            </div>
-            {/* contact */}
-            <div className='my-8'>
-            <h2 className='text-xl text-black uppercase '>CONTACT</h2>
-            <div className='flex my-4 gap-2'>
-              <span className="material-symbols-outlined">location_on</span>
-              <span>7895 Dr New Albuquerue, NM 19800,United States Of America</span>
-            </div>
-
-            <div className='flex my-4 gap-2'>
-            <span className="material-symbols-outlined">call</span>
-              <span>+566 477 256, +566 254 575</span>
-            </div>
-
-            <div className='flex my-4 gap-2'>
-            <span className="material-symbols-outlined">mail</span>
-              <span>info@domain.com</span>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     <Footer></Footer>
 
 
     </>
