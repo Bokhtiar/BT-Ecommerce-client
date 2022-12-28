@@ -7,10 +7,9 @@ export default function Product() {
   return (
    <>
     <Header></Header>
+    {/* bradcrumbs */}
+    <Bradcrumbs></Bradcrumbs>
     <div className="container">
-          {/* bradcrumbs */}
-         <Bradcrumbs></Bradcrumbs>
-        
         <div className="grid md:grid-cols-4 grid-cols-2">
           <div className="col-span-4 md:col-span-1">
             <Sidebar></Sidebar>
