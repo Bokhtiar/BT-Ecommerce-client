@@ -1,4 +1,6 @@
 import React from 'react'
+import CategorySideMenu from '../category/categorySideMenu'
+
 
 export default function Sidebar() {
     return (
@@ -7,62 +9,20 @@ export default function Sidebar() {
 
                 <div>
                     <h2 className='text-xl uppercase font-semibold '>Categories</h2>
-                    <div className='flex justify-between items-center mt-4'>
-                        <span><input type="checkbox" className="accent-primary" checked /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
+                    <CategorySideMenu name='Marlboro Advence' items={20} check={true}></CategorySideMenu>
+                    <CategorySideMenu name='Dervy' items={24}></CategorySideMenu>
+                    <CategorySideMenu name='Banson' items={28}></CategorySideMenu>
+                    <CategorySideMenu name='Star' items={29}></CategorySideMenu>
                     <hr />
                 </div>
 
                 {/* brands */}
                 <div>
                     <h2 className='text-xl uppercase font-semibold my-6 '>Brands</h2>
-                    <div className='flex justify-between items-center mt-4'>
-                        <span><input type="checkbox" className="accent-primary" checked /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
-                    <div className='flex justify-between items-center my-2'>
-                        <span><input type="checkbox" className="accent-primary" /></span>
-                        <span className='font-bold'>Alchol</span>
-                        <span>(20)</span>
-                    </div>
+                    <CategorySideMenu name='Marlboro Advence' items={20} check={true}></CategorySideMenu>
+                    <CategorySideMenu name='Dervy' items={24}></CategorySideMenu>
+                    <CategorySideMenu name='Banson' items={28}></CategorySideMenu>
+                    <CategorySideMenu name='Star' items={29}></CategorySideMenu>
                     <hr />
                 </div>
 
