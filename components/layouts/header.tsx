@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export default function header() {
   return (
@@ -10,7 +11,9 @@ export default function header() {
         <div className="container flex justify-between items-center">
           {/* logo */}
           <div className=''>
-            <img src="/logo.svg" className='w-16 md:w-28' alt="" />
+            <Link href='/'>
+              <img src="/logo.svg" className='w-16 md:w-28' alt="" />
+            </Link>
           </div>
           {/* search bar */}
           <div className=''>
@@ -95,10 +98,10 @@ export default function header() {
             <div className='ml-4'>
               <ul className='flex items-center gap-4 text-white '>
                 <li>
-                  <a href="">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <a href="">Shop</a>
+                  <Link href="/product">Shop</Link>
                 </li>
                 <li>
                   <a href="">About</a>

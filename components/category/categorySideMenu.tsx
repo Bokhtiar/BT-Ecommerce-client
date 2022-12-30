@@ -1,8 +1,7 @@
 import { CategorySideMenu } from "../../types/components/category-side-menu"
 
-const CategorySideMenu: React.FC<CategorySideMenu> = ({ name, items, check }: {
+const CategorySideMenu: React.FC<CategorySideMenu> = ({ name, check }: {
     name: string,
-    items: number,
     check?: boolean
 }) => {
     return <>
@@ -12,7 +11,7 @@ const CategorySideMenu: React.FC<CategorySideMenu> = ({ name, items, check }: {
                 <span><input type="checkbox" className="accent-primary" /></span>
                 <span className='font-bold'>{name}</span>
             </div>
-            <span className="font-bold">({items})</span>
+            <span className="font-bold"><span className="material-symbols-outlined">navigate_next</span></span>
         </div>
 
     </>
