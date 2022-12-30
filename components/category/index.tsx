@@ -1,15 +1,15 @@
 import React from 'react'
 import { Category } from '../../types/components/category'
 
-const Category: React.FC<Category> = ({ name, image }: {
+const Category: React.FC<Category> = ({ name, icon }: {
   name: string,
-  image: string
+  icon: string
 }) => {
   return (
     <div>
-      <div className='relative overflow-hidden'>
-        <img src={image} className='h-32 w-full' alt="" />
-        <a href="" className='absolute text-xl text-black font-bold bg-opacity-40 inset-0 text-center flex justify-center items-center'>{name}</a>
+      <div className='relative overflow-hidden bg-gray-600'>
+        <img src={icon} className='h-32 w-full' alt="" />
+        <a href="" className='absolute text-2xl text-primary font-bold bg-opacity-40 inset-0 text-center flex justify-center items-center'>{name}</a>
       </div>
     </div>
   )

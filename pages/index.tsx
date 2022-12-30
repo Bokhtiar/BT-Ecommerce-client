@@ -2,13 +2,56 @@ import Header from '../components/layouts/header'
 import Footer from '../components/layouts/footer'
 import Category from '../components/category'
 import Product from '../components/product'
+import { CategoriesNetwork } from '../network/Category.network'
+import {index} from '../network/product.network'
+import { useCallback, useEffect, useState } from 'react'
 
 
 export default function Home() {
+  const [Categories, setCategories] = useState([])
+  const [Products, setProducts] =useState([])
+
+  /* category fetch data */
+  const category_Fetch_Data = useCallback(async() => {
+    try {
+      const response = await CategoriesNetwork()
+      if(response && response.status=== 200){
+        setCategories(response.data.data)
+      }
+    } catch (error) {
+      if(error){
+        console.log(error);
+      }
+    }
+  }, [Categories])
+
+  /* product fetch data */
+  const product_fetch_data = useCallback(async()=> {
+    try {
+        const response = await index()
+        if(response  && response.status === 200){
+          setProducts(response.data.data)
+        }
+    } catch (error) {
+      if(error){
+        console.log(error);
+        
+      }
+    }
+  }, [Products])
+
+  /* useEffect */
+  useEffect(()=> {
+    category_Fetch_Data(),
+    product_fetch_data()
+  },[])
+
+
+
+
   return (
     <>
       <Header></Header>
-
 
       {/* banner start here */}
       <div className='py-28' style={{
@@ -70,12 +113,11 @@ export default function Home() {
       <div className='container'>
         <h2 className='text-2xl text-gray-700 font-bold my-6'>SHOP BY CATEGORIES</h2>
         <div className='grid grid-cols-2 md:grid-cols-5 gap-4'>
-          <Category name='Alcohol' image='/category.jfif'></Category>
-          <Category name='Speed' image='/category.jfif'></Category>
-          <Category name='Cuba Roal' image='/category.jfif'></Category>
-          <Category name='Derby' image='/category.jfif'></Category>
-          <Category name='Banchol' image='/category.jfif'></Category>
-          <Category name='Advence' image='/category.jfif'></Category>
+          {
+            Categories.map((category, i)=>{
+              return <Category key={i} {...category}></Category>
+            })
+          }
         </div>
       </div>
 
@@ -104,11 +146,11 @@ export default function Home() {
       <div className='container my-8'>
         <h2 className='text-2xl text-gray-700 my-4 font-bold'>Regular product</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Product name='Marlbro Advence' price={23} id='23' image='/product1.jpg' ></Product>
-          <Product name='Banchol' price={23} id='23' image='/product2.jfif' ></Product>
-          <Product name='Royel next' price={23} id='23' image='/product3.jfif' ></Product>
-          <Product name='Lucky Stric' price={23} id='23' image='/product5.jfif' ></Product>
-          <Product name='goldlif' price={23} id='23' image='/product6.jfif' ></Product>
+          {
+            Products.map((product, i)=>{
+              return <Product key={i} {...product} />
+            })
+          }
         </div>
       </div>
 
