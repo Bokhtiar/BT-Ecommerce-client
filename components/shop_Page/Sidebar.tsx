@@ -41,7 +41,7 @@ export default function Sidebar() {
                 {/* brands */}
                 <div>
                     <h2 className='text-xl uppercase font-semibold my-6 '>Brands</h2>
-                    <CategorySideMenu name='Marlboro Advence' check={true}></CategorySideMenu>
+                    <CategorySideMenu name='Marlboro Advence' check={true} _id="2"></CategorySideMenu>
 
                     <hr />
                 </div>

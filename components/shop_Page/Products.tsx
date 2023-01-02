@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 
 export default function Products() {
     const [products, setProduct] = useState([]);
-    console.log("tods", products)
 
     /* Fetch data */
     const fetchData = useCallback(async () => {
