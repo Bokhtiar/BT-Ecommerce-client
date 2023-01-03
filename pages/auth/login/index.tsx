@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import {login} from '../../../network/auth.network'
-import  LoginForm  from '../../../components/auth/login'
-import { setToken, getToken } from "../../../utils/helpers";
+import { login } from '../../../network/auth.network'
+import LoginForm from '../../../components/auth/login'
+import { setToken, getToken, networkErrorHandeller } from "../../../utils/helpers";
 import { useRouter } from "next/router";
+import { Toastify } from "../../../components/toastify";
 
 
 const Login: React.FC = (): JSX.Element => {
@@ -10,35 +11,33 @@ const Login: React.FC = (): JSX.Element => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  
+
   /* Handle login */
   const handleLogin = async (data: any) => {
     try {
-      setLoading(true);
+
       const response = await login(data);
-      console.log(response)
       if (response && response.status === 200) {
         console.log(response)
         await setToken(response.data.token);
-        //navigate("/dashboard");
         router.push("/dashboard");
-        console.log('dashboard');
       }
-      setLoading(false);
+      Toastify.Success("login successfully");
     } catch (error: any) {
       if (error) {
-        console.log(error);
+        console.log("s", error);
+
+        Toastify.Success("login successfully");
+        networkErrorHandeller(error);
       }
     }
   };
 
-  // useEffect(() => {
-  //   if (getToken()) { 
-  //     //navigate("/dashboard");
-  //     router.push("/dashboard");
-  //     console.log('dshaobard')
-  //   }
-  // }, [router]);
+  useEffect(() => {
+    if (getToken()) {
+      router.push("/dashboard");
+    }
+  }, [router]);
 
   return (
     <div className="w-full lg:w-3/4 mx-auto py-24 lg:py-32 px-4 lg:px-0">

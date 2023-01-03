@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/middleware.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/middleware.ts", "middleware.js"],
   "exclude": ["node_modules"]
 }

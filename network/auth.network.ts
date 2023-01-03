@@ -8,5 +8,5 @@ type LoginDataType = {
 
 
 export const login = async (data: LoginDataType) => {
-  return await publicRequest.post(`/api/v1/admin/auth/login`, data);
+  return await publicRequest.post(`/api/v1/user/auth/login`, data);
 };

@@ -1,11 +1,12 @@
-// import { Toastify } from "components/toastify";
-// import { NetworkErrorType } from "types/error.types";
+import { Toastify } from "../components/toastify";
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 /* Set token */
 export const setToken = async (token: string): Promise<boolean> => {
   localStorage.setItem("token", token);
   return true;
-};
+}; 
 
 /* Get token */
 export const getToken = () => {
@@ -17,6 +18,7 @@ export const removeToken = () => {
   localStorage.removeItem("token");
   return true;
 };
+
 
 /* Phone number valid check */
 export const isValidPhone = () => {
@@ -30,21 +32,29 @@ export const isValidEmail = () => {
   return regex;
 };
 
+
+
 /* Global network error handeller */
-// export const networkErrorHandeller = (error: any) => {
-//   if (
-//     error &&
-//     error.response &&
-//     error.response.data &&
-//     error.response.data.errors
-//   ) {
-//     error.response.data.errors.map((item: NetworkErrorType) => {
-//       return Toastify.Error(item.message);
-//     });
-//   } else {
-//     return Toastify.Error("Something going wrong, Try again.");
-//   }
-// };
+ type NetworkErrorType = {
+  field: string;
+  message: string;
+};
+
+export const networkErrorHandeller = (error: any) => {
+  
+  if (
+    error &&
+    error.response &&
+    error.response.data &&
+    error.response.data.errors
+  ) {
+    error.response.data.errors.map((item: NetworkErrorType) => {
+      return Toastify.Error(item.message);
+    });
+  } else {
+    return Toastify.Error("Something going wrong, Try again.");
+  }
+};
 
 /* Generate array from integer number */
 export const arrayFromNumber = (data: number) => {
