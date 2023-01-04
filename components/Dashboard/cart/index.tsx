@@ -1,12 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { CartNetwork } from '../../../network/cart.network'
-
-type cartProps = {
-  product: string;
-}
+import { CartNetwork, CartNetworkIncrement } from '../../../network/cart.network'
 
 
-const Cart:React.FC<cartProps> = (props:cartProps):JSX.Element => {
+
+const Cart:React.FC = ():JSX.Element => {
   const [carts, setCart] = useState([])
 
   /* cart fetch data */
@@ -16,6 +13,12 @@ const Cart:React.FC<cartProps> = (props:cartProps):JSX.Element => {
       setCart(response.data.data)
     }
   }, [carts])
+
+  /* cart increment */
+  const increment = async(_id:string) =>{
+    await CartNetworkIncrement({_id})
+    cart_fetch_data()
+  }
 
    /* useEffect */
    useEffect(()=> {
@@ -51,7 +54,7 @@ const Cart:React.FC<cartProps> = (props:cartProps):JSX.Element => {
           </thead>
           <tbody>
             {
-              carts.map((cart:cartProps, i) => {
+              carts.map((cart, i) => {
 
               return (
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -87,14 +90,16 @@ const Cart:React.FC<cartProps> = (props:cartProps):JSX.Element => {
                       type="number"
                       id="first_product"
                       className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="1"
+                      placeholder={cart.quantity}
                       required
                     />
                   </div>
                   <button
+                    onClick={() => increment(cart._id)}
                     className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button"
-                  >
+                  > 
+                  add
                     <span className="sr-only">Quantity button</span>
                     <svg
                       className="w-4 h-4"
