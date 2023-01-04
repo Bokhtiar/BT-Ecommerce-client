@@ -14,7 +14,7 @@ const DashboardSidebar: React.FC = ():JSX.Element => {
         </li>
 
         <li className="py-3 hover:bg-gray-300">
-          <a href="" className="font-bold">
+          <a href="/dashboard/order" className="font-bold">
             Order
           </a>
         </li>
