@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Cart from "../../../components/Dashboard/cart";
 import Header from "../../../components/layouts/header";
 import Footer from "../../../components/layouts/footer";
 import Bradcrumbs from "../../../components/bradcrumbs";
 import DashboardSidebar from "../../../components/Dashboard/sidebar";
-import Dashboard from "../../../components/Dashboard/Index";
+import { CartNetwork } from "../../../network/cart.network";
 
 const Index: React.FC = (): JSX.Element => {
   return (
@@ -19,7 +19,7 @@ const Index: React.FC = (): JSX.Element => {
         {/* main content */}
         <div className="col-span-3">
          <Cart></Cart>
-        </div>
+        </div> 
       </div>
       <Footer></Footer>
     </div>

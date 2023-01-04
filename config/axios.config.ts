@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { getToken } from "../utils/helpers";
 //import { getToken } from "utils/helper";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT || "http://localhost:4000";
@@ -29,21 +30,22 @@ publicRequest.interceptors.request.use(
 );
 
 /* Private request config */
-// privateRequest.interceptors.request.use(
-//   async (config: AxiosRequestConfig) => {
-//     const token = await getToken();
-//     if (config.headers === undefined) {
-//       config.headers = {};
-//     }
-//     if (token) {
-//       config.headers["Authorization"] = "Bearer " + token || "";
-//     }
-//     return config;
-//   },
-//   (err: any) => {
-//     console.log(err);
-//     Promise.reject(err);
-//   }
-// );
+privateRequest.interceptors.request.use(
+  async (config: AxiosRequestConfig) => {
+    const token = await getToken();
+    if (config.headers === undefined) {
+      config.headers = {};
+    }
+    if (token) {
+      config.headers["Authorization"] = "Bearer " + token || "";
+    }
+    return config;
+  },
+  (err: any) => {
+    console.log(err);
+    Promise.reject(err);
+  }
+);
+
 
 export { publicRequest, privateRequest };

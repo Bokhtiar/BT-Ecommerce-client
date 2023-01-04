@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { CartNetwork } from '../../../network/cart.network'
 
-export default function Cart() {
+type cartProps = {
+  product: string;
+}
+
+
+const Cart:React.FC<cartProps> = (props:cartProps):JSX.Element => {
+  const [carts, setCart] = useState([])
+
+  /* cart fetch data */
+  const cart_fetch_data = useCallback(async()=> {
+    const response:any = await CartNetwork()
+    if(response && response.status == 200){
+      setCart(response.data.data)
+    }
+  }, [carts])
+
+   /* useEffect */
+   useEffect(()=> {
+    cart_fetch_data()
+  },[])
+
   return (
     <div className="container">
       <h2 className="text-2xl font-bold">Cart List</h2>
@@ -26,15 +47,19 @@ export default function Cart() {
               <th scope="col" className="py-3 px-6">
                 Action
               </th>
-            </tr>
+            </tr> 
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            {
+              carts.map((cart:cartProps, i) => {
+
+              return (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <td className="p-4 w-32">
-                <img src="/product2.jfif" alt="Apple Watch" />
+                <img src={cart.product ? cart.product.image : ""} alt="Apple Watch" />
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                Apple Watch
+               {cart.product ? cart.product.name : ""}
               </td>
               <td className="py-4 px-6">
                 <div className="flex items-center space-x-3">
@@ -88,10 +113,10 @@ export default function Cart() {
                 </div>
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                $599
+                {cart.product.sale_price}
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                $599
+                {cart.product.sale_price * cart.quantity}
               </td>
               <td className="py-4 px-6">
                 <a
@@ -102,6 +127,9 @@ export default function Cart() {
                 </a>
               </td>
             </tr>
+              )
+            })
+          }
           </tbody>
         </table>
 
@@ -119,3 +147,6 @@ export default function Cart() {
     </div>
   );
 }
+
+
+export default Cart

@@ -100,11 +100,6 @@ export default function Home() {
                 <span className='text-gray-500'>Order over $200</span>
               </p>
             </div>
-
-
-
-
-
           </div>
         </div>
       </div>

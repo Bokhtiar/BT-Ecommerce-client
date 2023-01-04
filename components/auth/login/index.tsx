@@ -8,7 +8,7 @@ type PropsTypes = {
   onSubmit: (data: any) => void;
 };
 
-const LoginForm: React.FC<PropsTypes> = (props:PropsTypes): JSX.Element => {
+const LoginForm: React.FC<PropsTypes> = (props: PropsTypes): JSX.Element => {
   const {
     control,
     handleSubmit,
