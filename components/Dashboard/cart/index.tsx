@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { CartNetwork, CartNetworkIncrement } from '../../../network/cart.network'
+import { CartNetwork, CartNetworkDecrement, CartNetworkIncrement } from '../../../network/cart.network'
 
 
 
@@ -17,6 +17,12 @@ const Cart:React.FC = ():JSX.Element => {
   /* cart increment */
   const increment = async(_id:string) =>{
     await CartNetworkIncrement({_id})
+    cart_fetch_data()
+  }
+
+  /* cart decrement */
+  const decrement = async(_id:string) => {
+    await CartNetworkDecrement({_id})
     cart_fetch_data()
   }
 
@@ -67,9 +73,11 @@ const Cart:React.FC = ():JSX.Element => {
               <td className="py-4 px-6">
                 <div className="flex items-center space-x-3">
                   <button
+                    onClick={()=> decrement(cart._id)}
                     className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button"
                   >
+                    dec
                     <span className="sr-only">Quantity button</span>
                     <svg
                       className="w-4 h-4"

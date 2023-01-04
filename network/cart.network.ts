@@ -12,3 +12,7 @@ export const CartNetworkIncrement = async({_id}:{_id:string}) => {
     return await privateRequest.put(`/api/v1/cart/increment/${_id}`)
 }
 
+export const CartNetworkDecrement = async({_id}:{_id:string}) => {
+    return await privateRequest.put(`/api/v1/cart/decrement/${_id}`)
+}
+
