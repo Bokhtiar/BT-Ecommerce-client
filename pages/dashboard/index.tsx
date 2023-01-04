@@ -1,7 +1,8 @@
 import authRoute from "../../hook/authRoute"
 import Header from "../../components/layouts/header";
 import Bradcrumbs from "../../components/bradcrumbs";
-import DashboardSidebar from "../../components/sidebar";
+import DashboardSidebar from "../../components/Dashboard/sidebar";
+import Dashboard from "../../components/Dashboard/Index";
 
 const Index = () => {
   return (
@@ -17,7 +18,7 @@ const Index = () => {
         </div>
         {/* main content */}
         <div className="col-span-3">
-            
+            <Dashboard />
         </div>
       </div>
     </>
