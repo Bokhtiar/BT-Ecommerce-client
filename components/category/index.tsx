@@ -6,12 +6,10 @@ const Category: React.FC<Category> = ({ name, icon }: {
   icon: string
 }) => {
   return (
-    <div>
-      <div className='relative overflow-hidden bg-gray-600'>
-        <img src={icon} className='h-32 w-full' alt="" />
-        <a href="" className='absolute text-2xl text-primary font-bold bg-opacity-40 inset-0 text-center flex justify-center items-center'>{name}</a>
-      </div>
+    <div className='flex items-center gap-2 bg-primary text-white shadow-lg py-2 px-4 rounded rounded-full'>
+      <img src={icon} className="h-8 w-8 rounded rounded-full" alt="" />
+      <span className='text-xl font-bold'>{name}</span>
     </div>
-  )
+  );
 }
 export default Category
