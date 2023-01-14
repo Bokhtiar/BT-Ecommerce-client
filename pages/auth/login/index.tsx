@@ -20,6 +20,7 @@ const Login: React.FC = (): JSX.Element => {
       if (response && response.status === 200) {
         console.log(response)
         await setToken(response.data.token);
+        Toastify.Success(response.data.message)
         router.push("/dashboard");
       }
       Toastify.Success("login successfully");

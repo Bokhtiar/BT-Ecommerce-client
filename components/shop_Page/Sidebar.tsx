@@ -35,23 +35,8 @@ export default function Sidebar() {
                             return <CategorySideMenu key={i} {...category} check={true} />
                         })
                     }                    
-                    <hr />
+                    
                 </div>
-
-                {/* brands */}
-                <div>
-                    <h2 className='text-xl uppercase font-semibold my-6 '>Brands</h2>
-                    <CategorySideMenu name='Marlboro Advence' check={true} _id="2"></CategorySideMenu>
-
-                    <hr />
-                </div>
-
-                {/* priceing */}
-                <div>
-                    <h2 className='text-xl uppercase font-semibold my-6 '>Price</h2>
-                    <input id="medium-range" type="range" value="50" className="w-full h-2 mb-6 bg-primary rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
-                </div>
-
             </div>
         </>
     )

@@ -7,7 +7,6 @@ import Dashboard from "../../components/Dashboard/Index";
 const Index = () => {
   return (
     <>
-      <Header></Header>
       {/* bradcrumbs */}
       <Bradcrumbs name="Shop"></Bradcrumbs>
 

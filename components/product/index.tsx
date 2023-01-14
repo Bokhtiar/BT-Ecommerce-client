@@ -1,13 +1,19 @@
-import { product } from '../../types/components/product'
 import Link from "next/link";
-import { useCallback } from 'react';
-import { CartNetworkStore } from '../../network/cart.network';
+import { useCallback } from "react";
+import { product } from "../../types/components/product";
+import { CartNetworkStore } from "../../network/cart.network";
+import { networkErrorHandeller } from "../../utils/helpers";
+import { Toastify } from "../../components/toastify";
 
 const Product: React.FC<product> = (props: product) => {
-  const add_to_cart = async(_id:string) => {
-      const response =  await CartNetworkStore({_id})
-      console.log(response)
-  }
+  const add_to_cart = async (_id: string) => {
+    try {
+      const response = await CartNetworkStore({ _id });
+      Toastify.Success(response.data.message);
+    } catch (error: any) {
+      networkErrorHandeller(error);
+    }
+  };
   return (
     <div>
       <div className="shadow-lg">
@@ -15,8 +21,12 @@ const Product: React.FC<product> = (props: product) => {
           <img className="w-full h-48" src={props.image} alt="" />
         </div>
         <div className="my-2 mx-4">
-          <h3 className="text-md font-bold "><Link href={`/product/${props._id}`}>{props.name}</Link></h3>
-          <h3 className="text-md font-bold text-primary">${props.sale_price}</h3>
+          <h3 className="text-md font-bold ">
+            <Link href={`/product/${props._id}`}>{props.name}</Link>
+          </h3>
+          <h3 className="text-md font-bold text-primary">
+            ${props.sale_price}
+          </h3>
           <div className="flex items-center">
             <svg
               aria-hidden="true"
@@ -70,12 +80,15 @@ const Product: React.FC<product> = (props: product) => {
             </svg>
           </div>
         </div>
-        <button onClick={() => add_to_cart(props._id)} className="w-full rounded-md border text-white border-primary py-1 bg-primary hover:bg-white hover:text-black">
+        <button
+          onClick={() => add_to_cart(props._id)}
+          className="w-full rounded-md border text-white border-primary py-1 bg-primary hover:bg-white hover:text-black"
+        >
           Add to cart
         </button>
       </div>
     </div>
   );
-}
+};
 
-export default Product
+export default Product;

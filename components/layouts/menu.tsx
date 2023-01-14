@@ -32,7 +32,7 @@ export default function Index() {
     /* useEffect */
     useEffect(()=> {
         fetchCategory()
-    })
+    },[])
 
     return (
         <div className='bg-gray-600'>
