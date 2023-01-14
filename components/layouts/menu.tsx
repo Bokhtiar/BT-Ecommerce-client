@@ -1,7 +1,39 @@
 import Link from 'next/link'
 import React from 'react'
+import { useState } from 'react';
+import { useCallback } from 'react';
+import {networkErrorHandeller} from '../../utils/helpers'
+import { CategoriesNetwork } from '../../network/Category.network';
+import { useEffect } from 'react';
+
+type propsCategory = {
+    _id:string
+    name:string
+    icon:string
+}
 
 export default function Index() {
+
+    /* useState */
+    const [categories, setCategory] = useState<propsCategory[] | []>([]);
+
+    /* useCallback */
+    const fetchCategory = useCallback(async() => {
+        try {
+            const response = await CategoriesNetwork()
+            if(response && response.status === 200) {
+                setCategory(response?.data?.data)
+            }
+        } catch (error:any) {
+            networkErrorHandeller(error)
+        }
+    },[categories])
+
+    /* useEffect */
+    useEffect(()=> {
+        fetchCategory()
+    })
+
     return (
         <div className='bg-gray-600'>
             <div className="flex container items-center">
@@ -11,26 +43,22 @@ export default function Index() {
                         <span className="material-symbols-outlined">menu</span>
                         <span className='capitalize ml-2'>All Cateogry</span>
                         <div className='absolute w-full text-center left-0 top-full bg-white text-black shadow-md divide-y divide-gray-300 divide-dashed hidden group-hover:block '>
-                            <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                                <span className="material-symbols-outlined">menu_book</span>
-                                <span>Baby</span>
-                            </a>
-                            <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                                <span className="material-symbols-outlined">menu_book</span>
-                                <span>Baby</span>
-                            </a>
-                            <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                                <span className="material-symbols-outlined">menu_book</span>
-                                <span>Baby</span>
-                            </a>
-                            <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                                <span className="material-symbols-outlined">menu_book</span>
-                                <span>Baby</span>
-                            </a>
-                            <a href="" className='flex px-2 py-2 hover:bg-gray-100 gap-2 '>
-                                <span className="material-symbols-outlined">menu_book</span>
-                                <span>Baby</span>
-                            </a>
+                            
+                            {
+                                categories.map((category, i)=> {
+                                 return (
+                                   <>
+                                     <Link
+                                       href={`/product/category/${category._id}`}
+                                       className="flex px-2 py-2 hover:bg-gray-100 gap-2 "
+                                     >
+                                       <img src={category.icon} className="h-6 w-6 rounded rounded-full" alt="" />
+                                       <span>{category.name}</span>
+                                     </Link>
+                                   </>
+                                 );
+                                })
+                            }
                         </div>
                     </div>
                 </div>

@@ -4,5 +4,5 @@ export interface product {
   image: string;
   _id: string;
   description: string;
-  category: object
+  category: object;
 }

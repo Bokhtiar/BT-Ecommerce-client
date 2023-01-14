@@ -6,7 +6,6 @@ import Products from "../../components/shop_Page/Products"
 export default function Product() {
   return (
    <>
-    <Header></Header>
     {/* bradcrumbs */}
     <Bradcrumbs name="Shop"></Bradcrumbs>
     <div className="container">
@@ -20,7 +19,6 @@ export default function Product() {
         </div>
 
     </div>
-    <Footer></Footer>
    </>
   )
 }

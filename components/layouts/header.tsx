@@ -12,7 +12,7 @@ export default function header() {
           <div className='md:col-span-1'>
             <Link href='/'>
               <img src="/logo.svg" className='w-16 md:w-28' alt="" />
-            </Link>
+            </Link> 
           </div>
           {/* search bar */}
           <div className='md:col-span-3'>
