@@ -109,8 +109,6 @@ const Menu: React.FC = (): JSX.Element => {
                                     </li>
                                 </>
                             }
-
-
                         </ul>
                     </div>
                 </div>

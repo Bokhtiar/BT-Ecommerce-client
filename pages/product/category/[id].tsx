@@ -6,6 +6,8 @@ import Product from "../../../components/product";
 import { product } from "../../../types/components/product";
 import { CategoryProductNetwork } from "../../../network/Category.network";
 import { networkErrorHandeller } from "../../../utils/helpers";
+import Bradcrumbs from "../../../components/bradcrumbs";
+import Sidebar from "../../../components/shop_Page/Sidebar";
 
 const ProductCategoryShow: React.FC = (): JSX.Element => {
   const [product, setProduct] = useState<product[] | []>([]);
@@ -14,7 +16,7 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
   const _id = id;
-  
+
   /* fetch category has assing product */
   const fetchData = useCallback(async () => {
     try {
@@ -29,24 +31,32 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
 
   /* useEffect */
   useEffect(() => {
-    if(id){
+    if (id) {
       fetchData();
     }
-    
+
   }, [id, fetchData]);
 
   return (
     <>
-      <div className="container my-8">
-        <h2 className="text-2xl text-gray-500 my-4 font-bold">
-          Category Products
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {product.map((product, i) => {
-            return <Product key={i} {...product} />;
-          })}
+      <Bradcrumbs name="Shop"></Bradcrumbs>
+      <div className="container">
+        <div className="grid md:grid-cols-4 grid-cols-2">
+          <div className="col-span-4 md:col-span-1">
+            <Sidebar></Sidebar>
+          </div>
+          <div className="col-span-4 md:col-span-3 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {
+                product.map((product, i) => {
+                  return <Product key={i} {...product} />;
+                })
+              }
+            </div>
+          </div>
         </div>
       </div>
+
     </>
   );
 };

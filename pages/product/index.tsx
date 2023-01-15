@@ -5,10 +5,10 @@ import Sidebar from "../../components/shop_Page/Sidebar"
 import Products from "../../components/shop_Page/Products"
 export default function Product() {
   return (
-   <>
-    {/* bradcrumbs */}
-    <Bradcrumbs name="Shop"></Bradcrumbs>
-    <div className="container">
+    <>
+      {/* bradcrumbs */}
+      <Bradcrumbs name="Shop"></Bradcrumbs>
+      <div className="container">
         <div className="grid md:grid-cols-4 grid-cols-2">
           <div className="col-span-4 md:col-span-1">
             <Sidebar></Sidebar>
@@ -17,9 +17,7 @@ export default function Product() {
             <Products></Products>
           </div>
         </div>
-
-    </div>
-   </>
+      </div>
+    </>
   )
 }
- 
