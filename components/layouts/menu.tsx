@@ -100,7 +100,7 @@ const Menu: React.FC = (): JSX.Element => {
                     <div className='ml-4 float-right'>
                         <ul className='flex items-center gap-4 text-white '>
                             {
-                                user ? <Link href="/dashboard">{user?.name}</Link> : <>
+                                user ? <><Link href="/dashboard">{user?.name}</Link> <Link href="/logout">Logout</Link> </> : <>
                                     <li>
                                         <a href="/auth/login">Login</a>
                                     </li>

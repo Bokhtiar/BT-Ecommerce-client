@@ -15,12 +15,11 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
   /* request query id */
   const router = useRouter();
   const { id } = router.query;
-  const _id = id;
 
   /* fetch category has assing product */
   const fetchData = useCallback(async () => {
     try {
-      const response = await CategoryProductNetwork({ _id });
+      const response = await CategoryProductNetwork({ id });
       if (response && response.status === 200) {
         setProduct(response?.data?.data);
       }
@@ -39,7 +38,7 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <Bradcrumbs name="Shop"></Bradcrumbs>
+      <Bradcrumbs name="Category Product"></Bradcrumbs>
       <div className="container">
         <div className="grid md:grid-cols-4 grid-cols-2">
           <div className="col-span-4 md:col-span-1">
@@ -56,7 +55,6 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

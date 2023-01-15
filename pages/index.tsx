@@ -133,7 +133,7 @@ export default function Home() {
         <h2 className="text-2xl text-gray-700 my-4 font-bold">
           TOP NEW ARRIBLE
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {Products.map((product, i) => {
             return <Product key={i} {...product} />;
           })}
@@ -150,7 +150,7 @@ export default function Home() {
         <h2 className="text-2xl text-gray-700 my-4 font-bold">
           Regular product
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {Products.map((product, i) => {
             return <Product key={i} {...product} />;
           })}

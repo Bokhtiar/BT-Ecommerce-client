@@ -6,7 +6,6 @@ import { CategorySideMenu } from "../../types/components/category-side-menu";
 const CategorySideMenu: React.FC<CategorySideMenu> = (
   props: CategorySideMenu
 ) => {
-  const [products, setProduct] = useState([]);
 
   return (
     <>
@@ -14,7 +13,7 @@ const CategorySideMenu: React.FC<CategorySideMenu> = (
         <div className="flex justify-between items-center mt-4">
           <div className="flex gap-4">
             <span>
-              <input type="checkbox" className="accent-primary" />
+              <img className="h-4 w-4 rounded rounded-full" src={props.icon} alt="" />
             </span>
             <span className="font-bold">{props.name}</span>
           </div>
