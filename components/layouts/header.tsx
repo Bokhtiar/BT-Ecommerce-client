@@ -57,7 +57,7 @@ export default function header() {
                   </span>
                   <span className='text-primary -mt-3 font-bold'>{countCart}</span>
                 </a>
-              </div>
+              </div> 
               <div className='hover:text-primary'>
                 <span className="material-symbols-outlined">
                   favorite
