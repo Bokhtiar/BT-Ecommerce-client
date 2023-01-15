@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Cart from "../../../components/Dashboard/cart";
 import Bradcrumbs from "../../../components/bradcrumbs";
 import DashboardSidebar from "../../../components/Dashboard/sidebar";
+import authRoute from "../../../hook/authRoute";
 
 const Index: React.FC = (): JSX.Element => {
   return (
@@ -21,4 +22,4 @@ const Index: React.FC = (): JSX.Element => {
   );
 };
 
-export default Index;
+export default authRoute(Index);

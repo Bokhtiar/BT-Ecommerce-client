@@ -83,7 +83,6 @@ const Cart: React.FC = (): JSX.Element => {
                           className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                           type="button"
                         >
-                          dec
                           <span className="sr-only">Quantity button</span>
                           <svg
                             className="w-4 h-4"
@@ -113,7 +112,6 @@ const Cart: React.FC = (): JSX.Element => {
                           className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                           type="button"
                         >
-                          add
                           <span className="sr-only">Quantity button</span>
                           <svg
                             className="w-4 h-4"
@@ -132,10 +130,10 @@ const Cart: React.FC = (): JSX.Element => {
                       </div>
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product.sale_price}
+                      {cart.product ? cart.product.sale_price : ""}
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product.sale_price * cart.quantity}
+                      {cart.product? cart.product.sale_price : "" * cart.quantity}
                     </td>
                     <td className="py-4 px-6">
                       <span onClick={() => destroy(cart._id)} className="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</span>

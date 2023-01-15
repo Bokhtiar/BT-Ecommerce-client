@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Menu from '../../components/layouts/menu'
+import { networkErrorHandeller } from '../../utils/helpers';
+import { CartNetwork } from '../../network/cart.network';
 
 export default function header() {
+  /* cart count useState */
+  const [countCart, setCartCount] = useState<number>();
+
+  /* useCallback */
+  const fetchData = useCallback(async()=> {
+    try {
+      const response = await CartNetwork()
+      if(response && response.status === 200){
+        setCartCount(response?.data?.countCart)
+      }
+    } catch (error:any) {
+      networkErrorHandeller(error)
+    }
+  }, [countCart])
+ 
+  /* useEffect */
+  useEffect(()=> {
+    fetchData()
+  }, [countCart])
+
   return (
     <div>
       {/* header start here */}
@@ -29,10 +51,11 @@ export default function header() {
           <div className="md:col-span-1">
             <div className="flex justify-center text-center gap-4 float-right">
               <div className='hover:text-primary cursor-pointer'>
-                <a href="/dashboard/cart">
+                <a href="/dashboard/cart" className='flex'>
                   <span className="material-symbols-outlined">
-                    shopping_cart
+                    shopping_cart 
                   </span>
+                  <span className='text-primary -mt-3 font-bold'>{countCart}</span>
                 </a>
               </div>
               <div className='hover:text-primary'>
@@ -51,7 +74,6 @@ export default function header() {
           </div>
         </div>
       </header>
-
       <Menu></Menu>
     </div>
   )

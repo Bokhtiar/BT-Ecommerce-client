@@ -19,4 +19,3 @@ export const CartNetworkDecrement = async({_id}:{_id:string}) => {
 export const CartNetworkDestroy = async({_id}:{_id:string}) => {
     return await privateRequest.delete(`/api/v1/cart/destroy/${_id}`)
 }
-

@@ -8,7 +8,6 @@ import Button from '../../components/button'
 export default function Order() {
   return (
     <>
-      <Header></Header>
       <Bradcrumbs name="Order"></Bradcrumbs>
 
       <div className='container my-3'>
@@ -119,7 +118,6 @@ export default function Order() {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </>
   )
 }

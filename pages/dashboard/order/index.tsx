@@ -3,6 +3,7 @@ import DashboardSidebar from "../../../components/Dashboard/sidebar";
 import Header from "../../../components/layouts/header";
 import Footer from "../../../components/layouts/footer";
 import Order from '../../../components/Dashboard/order'
+import authRoute from "../../../hook/authRoute";
 
 const Index:React.FC  = ():JSX.Element => {
     return (
@@ -23,4 +24,4 @@ const Index:React.FC  = ():JSX.Element => {
       </div>
     );
 }
-export default Index
+export default authRoute(Index);
