@@ -25,12 +25,15 @@ const ProductCategoryShow: React.FC = (): JSX.Element => {
     } catch (error: any) {
       networkErrorHandeller(error);
     }
-  }, [product]);
+  }, [id]);
 
   /* useEffect */
   useEffect(() => {
-    fetchData();
-  }, []);
+    if(id){
+      fetchData();
+    }
+    
+  }, [id, fetchData]);
 
   return (
     <>

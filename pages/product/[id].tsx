@@ -21,7 +21,7 @@ export default function View() {
             if(response && response.status === 200){
                 setProduct(response.data.data)
             }
-    }, [product])
+    }, [id])
 
     /* useEffect */
     useEffect(()=> {
