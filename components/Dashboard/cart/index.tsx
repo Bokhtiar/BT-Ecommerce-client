@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { CartNetwork, CartNetworkDecrement, CartNetworkDestroy, CartNetworkIncrement } from '../../../network/cart.network'
+import { networkErrorHandeller } from '../../../utils/helpers'
 
 
 
@@ -8,9 +9,13 @@ const Cart: React.FC = (): JSX.Element => {
 
   /* cart fetch data */
   const cart_fetch_data = useCallback(async () => {
-    const response: any = await CartNetwork()
-    if (response && response.status == 200) {
-      setCart(response.data.data)
+    try {
+      const response: any = await CartNetwork()
+      if (response && response.status == 200) {
+        setCart(response.data.data)
+    } 
+    } catch (error: any) {
+      networkErrorHandeller(error)
     }
   }, [carts])
 
@@ -133,7 +138,7 @@ const Cart: React.FC = (): JSX.Element => {
                       {cart.product ? cart.product.sale_price : ""}
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product? cart.product.sale_price : "" * cart.quantity}
+                      {cart.product ? cart.product.sale_price : "" * cart.quantity}
                     </td>
                     <td className="py-4 px-6">
                       <span onClick={() => destroy(cart._id)} className="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</span>

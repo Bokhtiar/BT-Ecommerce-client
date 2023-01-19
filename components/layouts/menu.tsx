@@ -22,7 +22,7 @@ const Menu: React.FC = (): JSX.Element => {
 
     /* useState */
     const [categories, setCategory] = useState<propsCategory[] | []>([]);
-    const [user, setUser] = useState<PropsUser | null>();
+    // const [user, setUser] = useState<PropsUser | null>();
 
     /* useCallback */
     const fetchCategory = useCallback(async () => {
@@ -32,22 +32,24 @@ const Menu: React.FC = (): JSX.Element => {
                 setCategory(response?.data?.data)
             }
         } catch (error: any) {
+            console.log("cate", error);
+
             networkErrorHandeller(error)
         }
     }, [categories])
 
     /* profile */
-    const fetchDataProfile = useCallback(async () => {
-        const response = await profile()
-        if (response && response.status === 200) {
-            setUser(response?.data?.data)
-        }
-    }, [user])
+    // const fetchDataProfile = useCallback(async () => {
+    //     const response = await profile()
+    //     if (response && response.status === 200) {
+    //         setUser(response?.data?.data)
+    //     }
+    // }, [user])
 
     /* useEffect */
     useEffect(() => {
         fetchCategory();
-        fetchDataProfile();
+        // fetchDataProfile();
     }, [])
 
     return (
@@ -99,7 +101,7 @@ const Menu: React.FC = (): JSX.Element => {
                 <div className="w-1/5">
                     <div className='ml-4 float-right'>
                         <ul className='flex items-center gap-4 text-white '>
-                            {
+                            {/* {
                                 user ? <><Link href="/dashboard">{user?.name}</Link> <Link href="/logout">Logout</Link> </> : <>
                                     <li>
                                         <a href="/auth/login">Login</a>
@@ -108,7 +110,13 @@ const Menu: React.FC = (): JSX.Element => {
                                         <a href="/auth/register">Register</a>
                                     </li>
                                 </>
-                            }
+                            } */}
+                            <li>
+                                <a href="/auth/login">Login</a>
+                            </li>
+                            <li>
+                                <a href="/auth/register">Register</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

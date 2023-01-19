@@ -1,11 +1,11 @@
 import { Toastify } from "../components/toastify";
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-
+import { useRouter } from "next/router";
 /* Set token */
 export const setToken = async (token: string): Promise<boolean> => {
   localStorage.setItem("token", token);
-  return true;
+  return true; 
 }; 
 
 /* Get token */
@@ -49,9 +49,21 @@ export const networkErrorHandeller = (error: any) => {
     error.response.data.errors
   ) {
     error.response.data.errors.map((item: NetworkErrorType) => {
+      console.log('error', item.message);
       return Toastify.Error(item.message);
     });
   } else {
+    console.log("something",  error.response.data.message);
+    if(error.response.data.message === "Token expaired."){
+      removeToken()
+      return Toastify.Error("Token expaired.");
+    }else if(error.response.data.message === "Authorization token not found."){
+      console.log("auth",error.response.data.message);
+      removeToken()
+      const router = useRouter();
+      router.push("/auth/login");
+      return Toastify.Error("Authorization token not found.");
+    }
     return Toastify.Error("Something going wrong, Try again.");
   }
 };

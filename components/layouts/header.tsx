@@ -6,24 +6,24 @@ import { CartNetwork } from '../../network/cart.network';
 
 export default function header() {
   /* cart count useState */
-  const [countCart, setCartCount] = useState<number>();
+  // const [countCart, setCartCount] = useState<number>();
 
-  /* useCallback */
-  const fetchData = useCallback(async()=> {
-    try {
-      const response = await CartNetwork()
-      if(response && response.status === 200){
-        setCartCount(response?.data?.countCart)
-      }
-    } catch (error:any) {
-      networkErrorHandeller(error)
-    }
-  }, [countCart])
+  // /* useCallback */
+  // const fetchData = useCallback(async()=> {
+  //   try {
+  //     const response = await CartNetwork()
+  //     if(response && response.status === 200){
+  //       setCartCount(response?.data?.countCart)
+  //     }
+  //   } catch (error:any) {
+  //     networkErrorHandeller(error)
+  //   }
+  // }, [countCart])
  
-  /* useEffect */
-  useEffect(()=> {
-    fetchData()
-  }, [countCart])
+  // /* useEffect */
+  // useEffect(()=> {
+  //   fetchData()
+  // }, [countCart])
 
   return (
     <div>
@@ -55,7 +55,7 @@ export default function header() {
                   <span className="material-symbols-outlined">
                     shopping_cart 
                   </span>
-                  <span className='text-primary -mt-3 font-bold'>{countCart}</span>
+                  <span className='text-primary -mt-3 font-bold'>1</span>
                 </a>
               </div> 
               <div className='hover:text-primary'>
