@@ -1,12 +1,13 @@
 import Category from "../components/category";
 import Product from "../components/product";
 import { CategoriesNetwork } from "../network/Category.network";
-import { index } from "../network/product.network";
+import { FlashSaleProductIndex, RegularProductIndex } from "../network/product.network";
 import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
   const [Categories, setCategories] = useState([]);
-  const [Products, setProducts] = useState([]);
+  const [RegularProducts, setRegularProducts] = useState([]);
+  const [FlashSaleProducts, setFlashSaleProduct] = useState([]);
 
   /* category fetch data */
   const category_Fetch_Data = useCallback(async () => {
@@ -22,23 +23,40 @@ export default function Home() {
     }
   }, [Categories]);
 
-  /* product fetch data */
-  const product_fetch_data = useCallback(async () => {
+  /* regular product fetch data */
+  const regular_product_fetch_data = useCallback(async () => {
     try {
-      const response = await index();
+      const response = await RegularProductIndex();
       if (response && response.status === 200) {
-        setProducts(response.data.data);
+        setRegularProducts(response.data.data);
       }
-    } catch (error) {
+    } catch (error:any) {
       if (error) {
         console.log(error);
       }
     }
-  }, [Products]);
+  }, [RegularProducts]);
+
+  /* flash sale product list */
+  const flash_sale_product_fetch_data = useCallback(async()=> {
+    try {
+      const response = await FlashSaleProductIndex();
+      if (response && response.status === 200) {
+        setFlashSaleProduct(response.data.data);
+      }
+    } catch (error:any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  }, [FlashSaleProducts])
+
 
   /* useEffect */
   useEffect(() => {
-    category_Fetch_Data(), product_fetch_data();
+    category_Fetch_Data(), 
+    regular_product_fetch_data();
+    flash_sale_product_fetch_data()
   }, []);
 
   return (
@@ -134,8 +152,8 @@ export default function Home() {
           TOP NEW ARRIBLE
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {Products.map((product, i) => {
-            return <Product key={i} {...product} />;
+          {FlashSaleProducts.map((flashSaleproduct, i) => {
+            return <Product key={i} {...flashSaleproduct} />;
           })}
         </div>
       </div>
@@ -151,8 +169,8 @@ export default function Home() {
           Regular product
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {Products.map((product, i) => {
-            return <Product key={i} {...product} />;
+          {RegularProducts.map((Regularproduct, i) => {
+            return <Product key={i} {...Regularproduct} />;
           })}
         </div>
       </div>
