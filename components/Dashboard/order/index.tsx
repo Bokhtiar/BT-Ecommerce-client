@@ -4,6 +4,7 @@ import { OrderList } from "../../../network/order.network";
 import { networkErrorHandeller } from "../../../utils/helpers";
 
 interface IOrder {
+  _id: string;
   name: string;
   email: string;
   phone: string;
@@ -44,7 +45,6 @@ const Index: React.FC = (): JSX.Element => {
               <th scope="col" className="py-3 px-6">
                 Name
               </th>
-
               <th scope="col" className="py-3 px-6">
                 Phone
               </th>
@@ -56,7 +56,7 @@ const Index: React.FC = (): JSX.Element => {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody> 
             {
               orders.map((order, i) => {
                 return (
@@ -72,7 +72,7 @@ const Index: React.FC = (): JSX.Element => {
                     </td>
                     <td className="py-4 px-6">
                       <Link
-                        href=""
+                        href={`/dashboard/order/${order._id}`}
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
                         <span className="material-symbols-outlined">
