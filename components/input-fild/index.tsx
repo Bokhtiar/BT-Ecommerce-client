@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import { useController } from "react-hook-form";
-import { Iinput } from '../../types/components/input'
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 interface IRFields {

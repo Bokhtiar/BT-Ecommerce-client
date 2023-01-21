@@ -12,7 +12,7 @@ const Login: React.FC = (): JSX.Element => {
   const router = useRouter();
 
 
-  /* Handle login */
+  /* Handle login */ 
   const handleLogin = async (data: any) => {
     try {
  setLoading(true);
