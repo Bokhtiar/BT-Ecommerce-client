@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useCallback, useEffect, useState } from 'react'
 import { CartNetwork, CartNetworkDecrement, CartNetworkDestroy, CartNetworkIncrement } from '../../../network/cart.network'
 import { networkErrorHandeller } from '../../../utils/helpers'
@@ -164,9 +165,7 @@ const Cart: React.FC = (): JSX.Element => {
             <button className="rounded-md border text-white border-primary py-1 bg-primary hover:bg-white hover:text-black px-5 font-bold">
               Go To Shoping
             </button>
-            <button className="rounded-md border text-white border-primary py-1 bg-primary hover:bg-white hover:text-black px-5 font-bold">
-              Go To Checkout
-            </button>
+            <Link href="/dashboard/order/create" className="rounded-md border text-white border-primary py-1 bg-primary hover:bg-white hover:text-black px-5 font-bold"> Go To Checkout</Link>
           </div>
         </div>
       </div>

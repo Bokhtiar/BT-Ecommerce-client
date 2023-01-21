@@ -4,7 +4,7 @@ import Button from "../../button";
 
 
 type PropsTypes = {
-  loading: boolean;
+  loading: boolean; 
   onSubmit: (data: any) => void;
 };
 

@@ -1,16 +1,44 @@
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Bradcrumbs from '../../../components/bradcrumbs'
 import Button from '../../../components/button'
 import { TextInput } from '../../../components/input-fild'
 import OrderForm from '../../../components/order'
+import { Toastify } from '../../../components/toastify';
+import { OrderStoreNetwork } from '../../../network/order.network';
+import { networkErrorHandeller } from '../../../utils/helpers';
 
 export default function Order() {
+    const [isLoading, setLoading] = useState<boolean>(false);
+    const router = useRouter();
+
+    /* Handle order */
+    const handleOrder = async (data: any) => {
+        try {
+            setLoading(true);
+            const response = await OrderStoreNetwork(data);
+            if (response && response.status === 200) {
+                console.log("Store", response);
+                router.push("/dashboard/order");
+            }
+            Toastify.Success("Order created.");
+            setLoading(false);
+        } catch (error: any) {
+            if (error) {
+                console.log("s", error);
+                setLoading(false);
+                networkErrorHandeller(error);
+            }
+        }
+    };
+
     return (
         <>
             <Bradcrumbs name="Order"></Bradcrumbs>
             <div className='container my-3'>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="col-span-2">
-                        <OrderForm></OrderForm>
+                        <OrderForm loading={isLoading} onSubmit={(data) => handleOrder(data)} />
 
                     </div>
                     <div className="col-span-1">

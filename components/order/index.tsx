@@ -29,37 +29,20 @@ const OrderForm: React.FC<PropsTypes> = (props: PropsTypes): JSX.Element => {
                 </div>
 
                 {/* name part */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                     <div>
                         <TextInput
-                            label="First Name"
-                            name="f_name"
+                            label="Name"
+                            name="name"
                             type="text"
-                            placeholder="first name"
+                            placeholder="name"
                             control={control}
                             error={errors.name && errors.name.message}
                             defaultvalue={""}
                             rules={{
-                                required: "First name is required.",
+                                required: "Name is required.",
                                 pattern: {
-                                    message: "Invalid first name.",
-                                },
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <TextInput
-                            label="Last Name"
-                            name="l_name"
-                            type="text"
-                            placeholder="last name"
-                            control={control}
-                            error={errors.name && errors.name.message}
-                            defaultvalue={""}
-                            rules={{
-                                required: "Last name is required.",
-                                pattern: {
-                                    message: "Invalid last name.",
+                                    message: "Invalid name.",
                                 },
                             }}
                         />
@@ -104,20 +87,89 @@ const OrderForm: React.FC<PropsTypes> = (props: PropsTypes): JSX.Element => {
                     </div>
                 </div>
 
+                {/* payment information */}
+                <div className="grid grid-cols-3 my-4 gap-4">
+                    <TextInput
+                        label="Payment name"
+                        name="payment_name"
+                        type="text"
+                        placeholder="bkash, rocket, nogud"
+                        control={control}
+                        error={errors.payment_name && errors.payment_name.message}
+                        defaultvalue={""}
+                        rules={{
+                            required: "Payment name is required.",
+                            pattern: {
+                                message: "Invalid payment name.",
+                            },
+                        }}
+                    />
+
+                    <TextInput
+                        label="Payment number"
+                        name="payment_number"
+                        type="text"
+                        placeholder="0182372323"
+                        control={control}
+                        error={errors.payment_number && errors.payment_number.message}
+                        defaultvalue={""}
+                        rules={{
+                            required: "Payment number is required.",
+                            pattern: {
+                                message: "Invalid payment number.",
+                            },
+                        }}
+                    />
+
+                    <TextInput
+                        label="Payment transection id"
+                        name="payment_txid"
+                        type="text"
+                        placeholder="0las23las"
+                        control={control}
+                        error={errors.payment_txid && errors.payment_txid.message}
+                        defaultvalue={""}
+                        rules={{
+                            required: "payment transection id is required.",
+                            pattern: {
+                                message: "Invalid payment transection id.",
+                            },
+                        }}
+                    />
+                </div>
+
                 {/* address */}
                 <div className='grid grid-cols-1 my-4'>
                     <TextInput
-                        label="Address"
-                        name="address"
+                        label="Location"
+                        name="location"
                         type="text"
-                        placeholder="Address"
+                        placeholder="Location"
                         control={control}
-                        error={errors.addres && errors.addres.message}
+                        error={errors.location && errors.location.message}
                         defaultvalue={""}
                         rules={{
-                            required: "Addres is required.",
+                            required: "Location is required.",
                             pattern: {
-                                message: "Invalid addres.",
+                                message: "Invalid location.",
+                            },
+                        }}
+                    />
+                </div>
+                {/* note */}
+                <div className='grid grid-cols-1 my-4'>
+                    <TextInput
+                        label="Note"
+                        name="note"
+                        type="text"
+                        placeholder="note"
+                        control={control}
+                        error={errors.note && errors.note.message}
+                        defaultvalue={""}
+                        rules={{
+                            required: "Note is required.",
+                            pattern: {
+                                message: "Invalid note.",
                             },
                         }}
                     />
