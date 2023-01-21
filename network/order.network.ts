@@ -11,7 +11,9 @@ type OrderDataTypes = {
 }
 
 export const OrderStoreNetwork = async(data: OrderDataTypes) => {
-    console.log(data);
-    
     return await privateRequest.post(`/api/v1/order`, data);
+}
+
+export const OrderList = async() => {
+    return await privateRequest.get(`/api/v1/order`);
 }
