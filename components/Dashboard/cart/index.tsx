@@ -2,10 +2,19 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { CartNetwork, CartNetworkDecrement, CartNetworkDestroy, CartNetworkIncrement } from '../../../network/cart.network'
 import { networkErrorHandeller } from '../../../utils/helpers'
 
-
+type ProductProps = {
+  name: string;
+  image: string;
+  sale_price: any;
+}
+interface ICart {
+  _id: string;
+  product: ProductProps | null;
+  quantity: any;
+}
 
 const Cart: React.FC = (): JSX.Element => {
-  const [carts, setCart] = useState([])
+  const [carts, setCart] = useState<ICart[] | []>([])
 
   /* cart fetch data */
   const cart_fetch_data = useCallback(async () => {
@@ -13,7 +22,7 @@ const Cart: React.FC = (): JSX.Element => {
       const response: any = await CartNetwork()
       if (response && response.status == 200) {
         setCart(response.data.data)
-    } 
+      }
     } catch (error: any) {
       networkErrorHandeller(error)
     }
@@ -76,10 +85,10 @@ const Cart: React.FC = (): JSX.Element => {
                 return (
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="p-4 w-32">
-                      <img src={cart.product ? cart.product.image : ""} alt="Apple Watch" />
+                      <img src={cart.product?.image} alt="Apple Watch" />
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product ? cart.product.name : ""}
+                      {cart.product?.name}
                     </td>
                     <td className="py-4 px-6">
                       <div className="flex items-center space-x-3">
@@ -135,10 +144,10 @@ const Cart: React.FC = (): JSX.Element => {
                       </div>
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product ? cart.product.sale_price : ""}
+                      {cart.product?.sale_price}
                     </td>
                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                      {cart.product ? cart.product.sale_price : "" * cart.quantity}
+                      {cart.product?.sale_price * cart.quantity}
                     </td>
                     <td className="py-4 px-6">
                       <span onClick={() => destroy(cart._id)} className="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</span>

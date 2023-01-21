@@ -15,7 +15,8 @@ const Index: React.FC = (): JSX.Element => {
         </div>
         {/* main content */}
         <div className="col-span-3">
-         <Cart></Cart>
+         <Cart
+         ></Cart> 
         </div> 
       </div>
     </div>

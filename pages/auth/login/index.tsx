@@ -15,7 +15,7 @@ const Login: React.FC = (): JSX.Element => {
   /* Handle login */
   const handleLogin = async (data: any) => {
     try {
-
+ setLoading(true);
       const response = await login(data);
       if (response && response.status === 200) {
         console.log(response)
@@ -24,10 +24,11 @@ const Login: React.FC = (): JSX.Element => {
         router.push("/dashboard");
       }
       Toastify.Success("login successfully");
+      setLoading(false);
     } catch (error: any) {
       if (error) {
         console.log("s", error);
-
+        setLoading(false);
         Toastify.Success("login successfully");
         networkErrorHandeller(error);
       }
