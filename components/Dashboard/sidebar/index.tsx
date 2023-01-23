@@ -1,4 +1,10 @@
+import { removeToken } from "../../../utils/helpers";
+
 const DashboardSidebar: React.FC = ():JSX.Element => {
+
+  const logout = () => {
+    return removeToken()
+  }
     return (
       <ul className="text-center divide-y divide-gray-300 divide-dashed">
         <li className="py-3 hover:bg-gray-300">
@@ -20,7 +26,7 @@ const DashboardSidebar: React.FC = ():JSX.Element => {
         </li>
 
         <li className="py-3 hover:bg-gray-300">
-          <a href="/auth/logout" className="font-bold">
+          <a onClick={()=>logout()} href="/auth/logout" className="font-bold">
             Logout
           </a>
         </li>
