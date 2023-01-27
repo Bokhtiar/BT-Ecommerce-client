@@ -51,12 +51,12 @@ export default function header() {
           <div className="md:col-span-1">
             <div className="flex justify-center text-center gap-4 float-right">
               <div className='hover:text-primary cursor-pointer'>
-                <a href="/dashboard/cart" className='flex'>
+                <Link href="/dashboard/cart" className='flex'>
                   <span className="material-symbols-outlined">
                     shopping_cart 
                   </span>
                   <span className='text-primary -mt-3 font-bold'>1</span>
-                </a>
+                </Link>
               </div> 
               <div className='hover:text-primary'>
                 <span className="material-symbols-outlined">
@@ -64,11 +64,11 @@ export default function header() {
                 </span>
               </div>
               <div className='hover:text-primary cursor-pointer'>
-                <a href="/dashboard">
+                <Link href="/dashboard">
                   <span className="material-symbols-outlined">
                     person_filled
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

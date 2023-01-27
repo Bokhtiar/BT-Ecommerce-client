@@ -1,7 +1,10 @@
 import Category from "../components/category";
 import Product from "../components/product";
 import { CategoriesNetwork } from "../network/Category.network";
-import { FlashSaleProductIndex, RegularProductIndex } from "../network/product.network";
+import {
+  FlashSaleProductIndex,
+  RegularProductIndex,
+} from "../network/product.network";
 import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
@@ -30,7 +33,7 @@ export default function Home() {
       if (response && response.status === 200) {
         setRegularProducts(response.data.data);
       }
-    } catch (error:any) {
+    } catch (error: any) {
       if (error) {
         console.log(error);
       }
@@ -38,25 +41,23 @@ export default function Home() {
   }, [RegularProducts]);
 
   /* flash sale product list */
-  const flash_sale_product_fetch_data = useCallback(async()=> {
+  const flash_sale_product_fetch_data = useCallback(async () => {
     try {
       const response = await FlashSaleProductIndex();
       if (response && response.status === 200) {
         setFlashSaleProduct(response.data.data);
       }
-    } catch (error:any) {
+    } catch (error: any) {
       if (error) {
         console.log(error);
       }
     }
-  }, [FlashSaleProducts])
-
+  }, [FlashSaleProducts]);
 
   /* useEffect */
   useEffect(() => {
-    category_Fetch_Data(), 
-    regular_product_fetch_data();
-    flash_sale_product_fetch_data()
+    category_Fetch_Data(), regular_product_fetch_data();
+    flash_sale_product_fetch_data();
   }, []);
 
   return (

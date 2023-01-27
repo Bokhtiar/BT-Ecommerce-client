@@ -90,10 +90,10 @@ const Menu: React.FC = (): JSX.Element => {
                                 <Link href="/product">Shop</Link>
                             </li>
                             <li>
-                                <a href="/about">About</a>
+                                <Link href="/about">About</Link>
                             </li>
                             <li>
-                                <a href="/contact">Contact</a>
+                                <Link href="/contact">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -112,10 +112,10 @@ const Menu: React.FC = (): JSX.Element => {
                                 </>
                             } */}
                             <li>
-                                <a href="/auth/login">Login</a>
+                                <Link href="/auth/login">Login</Link>
                             </li>
                             <li>
-                                <a href="/auth/register">Register</a>
+                                <Link href="/auth/register">Register</Link>
                             </li>
                         </ul>
                     </div>

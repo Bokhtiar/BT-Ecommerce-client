@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { removeToken } from "../../../utils/helpers";
 
 const DashboardSidebar: React.FC = ():JSX.Element => {
@@ -8,27 +9,27 @@ const DashboardSidebar: React.FC = ():JSX.Element => {
     return (
       <ul className="text-center divide-y divide-gray-300 divide-dashed">
         <li className="py-3 hover:bg-gray-300">
-          <a href="/dashboard" className="font-bold">
+          <Link href="/dashboard" className="font-bold">
             Dasbhoard
-          </a>
+          </Link>
         </li>
 
         <li className="py-3 hover:bg-gray-300">
-          <a href="/dashboard/cart" className="font-bold">
+          <Link href="/dashboard/cart" className="font-bold">
             Cart
-          </a>
+          </Link>
         </li>
 
         <li className="py-3 hover:bg-gray-300">
-          <a href="/dashboard/order" className="font-bold">
+          <Link href="/dashboard/order" className="font-bold">
             Order
-          </a>
+          </Link>
         </li>
 
         <li className="py-3 hover:bg-gray-300">
-          <a onClick={()=>logout()} href="/auth/logout" className="font-bold">
+          <Link onClick={()=>logout()} href="/auth/logout" className="font-bold">
             Logout
-          </a>
+          </Link>
         </li>
       </ul>
     );

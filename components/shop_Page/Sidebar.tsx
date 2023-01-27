@@ -23,7 +23,7 @@ export default function Sidebar() {
     /* useCallback */
     useEffect(()=> {
         category_fetch_data()
-    }, [])
+    }, [category_fetch_data])
 
     return (
         <>

@@ -73,9 +73,9 @@ export default function Order() {
                         <div className='shadow-lg'>
                             <h2 className='font-bold my-8 px-4'>Your Order</h2>
                             {
-                                carts.map((cart, i) => {   
+                                carts.map((cart, i) => {  
                                     return (
-                                        <div className="py-3">
+                                        <div className="py-3" key={i} >
                                             <div className="flex items-center gap-4 px-4">
                                                 <div className=''>
                                                     <img src={cart.product?.image} className='h-16 w-32' alt="" />

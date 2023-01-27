@@ -85,7 +85,7 @@ const Cart: React.FC = (): JSX.Element => {
               carts.map((cart, i) => {
 
                 return (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={i}>
                     <td className="p-4 w-32">
                       <img src={cart.product?.image} alt="Apple Watch" />
                     </td>

@@ -39,12 +39,12 @@ const OrderShow: React.FC = (): JSX.Element => {
             console.log(error);
             networkErrorHandeller(error)
         }
-    }, [order])
+    }, [order, id])
 
     /* useEffect */
     useEffect(() => {
         fetch_data_order_show()
-    }, [id])
+    }, [])
 
     return (
         <div className="container">
