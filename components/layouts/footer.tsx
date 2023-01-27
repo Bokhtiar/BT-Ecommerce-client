@@ -11,7 +11,7 @@ export default function footer() {
             {/* compnay description */}
             <div className="my-8">
               <Image
-                src="/logo.svg"
+                src="./logo.svg"
                 alt="Picture of the author"
                 width={0}
                 height={0}

@@ -71,7 +71,7 @@ export default function Home() {
       <div
         className="py-28"
         style={{
-          backgroundImage: "url('../banner.jpg')",
+          backgroundImage: "url('./banner.jpg')",
           height: "70vh",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
