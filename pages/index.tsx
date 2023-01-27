@@ -69,10 +69,11 @@ export default function Home() {
     <>
       {/* banner start here */}
       <div
-        className="py-28"
+        className="md:py-28 py-12"
         style={{
           backgroundImage: "url('./banner.jpg')",
-          height: "70vh",
+          height: "md:70vh 10vh",
+          width:"100%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
