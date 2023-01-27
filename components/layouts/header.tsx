@@ -35,7 +35,7 @@ export default function header() {
           <div className="md:col-span-1">
             <Link href="/">
               <Image
-                src="/logo.svg"
+                src="../logo.svg"
                 alt="Picture of the author"
                 width={0}
                 height={0}
@@ -51,7 +51,7 @@ export default function header() {
               </span>
               <input
                 type="text"
-                className="px-48 border border-primary py-2 hover:border-gray-300"
+                className="md:px-48 px-4 border border-primary py-2 hover:border-gray-300"
                 name=""
                 id=""
               />

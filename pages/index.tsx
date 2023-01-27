@@ -8,12 +8,14 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import { ICategory } from "../types/components/category";
 import { Iproduct } from "../types/components/product";
-
+import Image from "next/image";
 
 export default function Home() {
   const [Categories, setCategories] = useState<ICategory[] | []>([]);
   const [RegularProducts, setRegularProducts] = useState<Iproduct[] | []>([]);
-  const [FlashSaleProducts, setFlashSaleProduct] = useState<Iproduct[] | []>([]);
+  const [FlashSaleProducts, setFlashSaleProduct] = useState<Iproduct[] | []>(
+    []
+  );
 
   /* category fetch data */
   const category_Fetch_Data = useCallback(async () => {
@@ -69,12 +71,13 @@ export default function Home() {
       <div
         className="py-28"
         style={{
-          backgroundImage: "url('/banner.jpg')",
+          backgroundImage: "url('../banner.jpg')",
           height: "70vh",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
+
         <div className="container">
           <div className="">
             <h2 className="text-4xl text-gray-600 mb-4 my-auto">
@@ -98,7 +101,6 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex gap-2 py-3 px-12 border border-primary rounded-sm  text-center">
               <div className="mt-4">
-                {" "}
                 <span className="material-symbols-outlined">
                   restaurant_menu
                 </span>
@@ -111,7 +113,6 @@ export default function Home() {
 
             <div className="flex gap-2 py-3 px-12 border border-primary rounded-sm  text-center">
               <div className="mt-4">
-                {" "}
                 <span className="material-symbols-outlined">
                   restaurant_menu
                 </span>
@@ -124,7 +125,6 @@ export default function Home() {
 
             <div className="flex gap-2 py-3 px-12 border border-primary rounded-sm  text-center">
               <div className="mt-4">
-                {" "}
                 <span className="material-symbols-outlined">
                   restaurant_menu
                 </span>
