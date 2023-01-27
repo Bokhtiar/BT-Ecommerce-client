@@ -11,6 +11,6 @@ export const FlashSaleProductIndex = async () => {
 }
 
 /* List of resources */
-export const productShow = async ({_id}: {_id:string}) => {
-  return await publicRequest.get(`/api/v1/product/${_id}`);
+export const productShow = async ({id}: {id:any}) => {
+  return await publicRequest.get(`/api/v1/product/${id}`);
 }; 

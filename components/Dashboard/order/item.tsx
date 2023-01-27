@@ -10,7 +10,7 @@ interface ICart {
     product: ProductProps | null;
     quantity: any;
 }
-
+ 
 
 const OrderItem: React.FC<ICart> = (props: ICart) => {
     return (

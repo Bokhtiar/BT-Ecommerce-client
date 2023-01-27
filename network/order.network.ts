@@ -18,6 +18,6 @@ export const OrderList = async() => {
     return await privateRequest.get(`/api/v1/order`);
 }
 
-export const OrderNetworkShow = async({_id}:{_id:string}) => {
-    return await privateRequest.get(`/api/v1/order/${_id}`);
+export const OrderNetworkShow = async({id}:{id:any}) => {
+    return await privateRequest.get(`/api/v1/order/${id}`);
 }

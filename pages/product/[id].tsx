@@ -12,12 +12,11 @@ export default function View() {
 
      const router = useRouter();
      const { id } = router.query;
-     const _id = id
 
     const [product, setProduct] = useState<product | null>(null)
     /* useCall back */
     const product_Show_fetch_data = useCallback(async()=> {
-            const response = await productShow({_id})
+            const response = await productShow({id})
             if(response && response.status === 200){
                 setProduct(response.data.data)
             }
@@ -26,12 +25,11 @@ export default function View() {
     /* useEffect */
     useEffect(()=> {
         product_Show_fetch_data()
-    },[])
+    },[product_Show_fetch_data])
 
 
     return (
       <>
-        <Header></Header>
         <Bradcrumbs name="Product / Details"></Bradcrumbs>
         <section className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -111,7 +109,7 @@ export default function View() {
               {/* brand */}
               <div className="flex gap-4">
                 <span className="font-bold">Category:</span>
-                <span className="text-base">{product?.category.name}</span>
+                <span className="text-base">{product?.category?.name}</span>
               </div>
 
               {/* price */}
@@ -152,7 +150,7 @@ export default function View() {
           <div className="my-8">
             <h2 className="uppercase font-bold text-xl">Releted products</h2>
             <div className="container">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {/* <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <Product
                   name="Marlbro Advence"
                   sale_price={23}
@@ -183,11 +181,10 @@ export default function View() {
                   _id="23"
                   image="/product6.jfif"
                 ></Product>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
-        <Footer></Footer>
       </>
     );
 }

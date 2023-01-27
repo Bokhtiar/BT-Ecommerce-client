@@ -19,9 +19,8 @@ interface IOrder {
 
 const OrderShow: React.FC = (): JSX.Element => {
     const router = useRouter();
-    const { id } = router.query;
-    const _id = id
-
+    let {id}  = router.query;
+    
     /* useState */
     const [order, setOrder] = useState<IOrder | null>();
     const [carts, setCart] = useState([])
@@ -29,7 +28,7 @@ const OrderShow: React.FC = (): JSX.Element => {
     /* data fetch */
     const fetch_data_order_show = useCallback(async () => {
         try {
-            const response = await OrderNetworkShow({ _id });
+            const response = await OrderNetworkShow({id});
             console.log(response);
             
             if (response && response.status == 200) {
@@ -45,7 +44,7 @@ const OrderShow: React.FC = (): JSX.Element => {
     /* useEffect */
     useEffect(() => {
         fetch_data_order_show()
-    }, [_id])
+    }, [id])
 
     return (
         <div className="container">

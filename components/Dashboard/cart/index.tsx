@@ -21,6 +21,7 @@ const Cart: React.FC = (): JSX.Element => {
   const cart_fetch_data = useCallback(async() => {
     try {
       const response: any = await CartNetwork()
+      
       if (response && response.status == 200) {
         setCart(response.data.data)
       }
