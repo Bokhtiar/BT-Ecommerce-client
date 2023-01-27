@@ -37,7 +37,7 @@ privateRequest.interceptors.request.use(
       config.headers = {};
     }
     if (token) {
-      config.headers["Authorization"] = "Bearer " + token || "";
+      // config.headers["Authorization"] = "Bearer " + token || "";
     }
     return config;
   },
