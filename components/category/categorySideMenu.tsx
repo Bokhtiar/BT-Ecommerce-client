@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { CategoryProductNetwork } from "../../network/Category.network";
-import { CategorySideMenu } from "../../types/components/category-side-menu";
+import { ICategorySideMenu } from "../../types/components/category-side-menu";
 
-const CategorySideMenu: React.FC<CategorySideMenu> = (
-  props: CategorySideMenu
+const CategorySideMenu: React.FC<ICategorySideMenu> = (
+  props: ICategorySideMenu
 ) => {
 
   return (

@@ -1,11 +1,11 @@
 import Product from '../product'
 import axios from 'axios';
 import { RegularProductIndex } from '../../network/product.network'
-import { product } from '../../types/components/product';
+import { Iproduct } from '../../types/components/product';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function Products() {
-    const [products, setProduct] = useState([]);
+    const [products, setProduct] = useState<Iproduct[] | []>([]);
 
     /* Fetch data */
     const fetchData = useCallback(async () => {

@@ -3,8 +3,10 @@ import { publicRequest } from '../../config/axios.config'
 import React, { useCallback, useEffect, useState } from 'react'
 import CategorySideMenu from '../category/categorySideMenu'
 import { CategoriesNetwork } from '../../network/Category.network'
+import { ICategorySideMenu } from '../../types/components/category-side-menu'
+
 export default function Sidebar() {
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState<ICategorySideMenu[] | []>([])
 
     /* category fetch data */
     const category_fetch_data = useCallback(async () => {
