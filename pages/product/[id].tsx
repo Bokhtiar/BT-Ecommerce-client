@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { productShow } from '../../network/product.network'
 import { useRouter } from "next/router";
 import { networkErrorHandeller } from '../../utils/helpers'
-import { CategoryProductNetwork } from '../../network/Category.network'
+import { CategoryProductNetwork, ReletedProductNetwork } from '../../network/Category.network'
 
 export default function View() {
 
@@ -27,7 +27,7 @@ export default function View() {
   /* releted product fetch data */
   const reletedProductFetchData = useCallback(async () => {
     try {
-      const response = await CategoryProductNetwork({ id })
+      const response = await ReletedProductNetwork({ id })
       if (response && response.status === 200) {
         setReletedProduct(response.data.data)
       }

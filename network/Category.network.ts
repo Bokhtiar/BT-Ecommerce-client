@@ -7,3 +7,7 @@ export const CategoriesNetwork = async() => {
 export const CategoryProductNetwork = async({id}: {id:any}) => {
     return await publicRequest.get(`/api/v1/category/product/${id}`);
 }
+
+export const ReletedProductNetwork = async({id}: {id:any}) => {
+    return await publicRequest.get(`api/v1/releted/product/${id}`);
+}
