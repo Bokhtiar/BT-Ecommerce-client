@@ -91,7 +91,7 @@ export default function header() {
     {/* mobaile resonsive */}
       <header className="flex justify-between md:hidden py-4 px-5">
         <Image
-          src="../logo.svg"
+          src="./logo.svg"
           alt="Picture of the author"
           width={0}
           height={0}
