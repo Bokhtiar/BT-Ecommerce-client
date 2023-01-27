@@ -1,6 +1,6 @@
 import Product from '../product'
 import axios from 'axios';
-import { index } from '../../network/product.network'
+import { RegularProductIndex } from '../../network/product.network'
 import { product } from '../../types/components/product';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -10,7 +10,7 @@ export default function Products() {
     /* Fetch data */
     const fetchData = useCallback(async () => {
         try {
-            const response = await index();
+            const response = await RegularProductIndex();
             if ( response && response.status === 200 ) {
                 setProduct(response.data.data);
             }

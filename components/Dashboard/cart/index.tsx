@@ -8,7 +8,7 @@ type ProductProps = {
   image: string;
   sale_price: any;
 }
-interface ICart {
+interface ICart { 
   _id: string;
   product: ProductProps | null;
   quantity: any;
