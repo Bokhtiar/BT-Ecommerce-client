@@ -35,8 +35,8 @@ export default function header() {
           <div className="md:col-span-1 ">
             <Link href="/" className="flex items-center">
               <Image
-                src="../logo.svg"
-                alt="Picture of the author"
+                src="./logo.svg"
+                alt="logo"
                 width={0}
                 height={0}
                 className="w-28 md:w-28"
