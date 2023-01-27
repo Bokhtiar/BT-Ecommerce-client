@@ -3,7 +3,7 @@ import Header from '../../components/layouts/header'
 import Footer from '../../components/layouts/footer'
 import Bradcrumbs from '../../components/bradcrumbs'
 import Product from '../../components/product'
-import { product } from '../../types/components/product'
+import { Iproduct } from '../../types/components/product'
 import { useCallback, useEffect, useState } from "react";
 import { productShow } from '../../network/product.network'
 import { useRouter } from "next/router";
@@ -13,7 +13,7 @@ export default function View() {
      const router = useRouter();
      const { id } = router.query;
 
-    const [product, setProduct] = useState<product | null>(null)
+    const [product, setProduct] = useState<Iproduct | null>(null)
     /* useCall back */
     const product_Show_fetch_data = useCallback(async()=> {
             const response = await productShow({id})

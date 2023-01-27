@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import Product from "../../../components/product";
-import { product } from "../../../types/components/product";
+import { Iproduct } from "../../../types/components/product";
 import { CategoryProductNetwork } from "../../../network/Category.network";
 import { networkErrorHandeller } from "../../../utils/helpers";
 import Bradcrumbs from "../../../components/bradcrumbs";
 import Sidebar from "../../../components/shop_Page/Sidebar";
 
 const ProductCategoryShow: React.FC = (): JSX.Element => {
-  const [product, setProduct] = useState<product[] | []>([]);
+  const [product, setProduct] = useState<Iproduct[] | []>([]);
 
   /* request query id */
   const router = useRouter();

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useCallback } from "react";
-import { product } from "../../types/components/product";
+import { Iproduct } from "../../types/components/product";
 import { CartNetworkStore } from "../../network/cart.network";
 import { networkErrorHandeller } from "../../utils/helpers";
 import { Toastify } from "../../components/toastify";
 
-const Product: React.FC<product> = (props: product) => {
+const Product: React.FC<Iproduct> = (props: Iproduct) => {
   const add_to_cart = async (_id: string) => {
     try {
       const response = await CartNetworkStore({ _id });

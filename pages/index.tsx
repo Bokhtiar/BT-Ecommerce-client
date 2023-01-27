@@ -6,11 +6,14 @@ import {
   RegularProductIndex,
 } from "../network/product.network";
 import { useCallback, useEffect, useState } from "react";
+import { ICategory } from "../types/components/category";
+import { Iproduct } from "../types/components/product";
+
 
 export default function Home() {
-  const [Categories, setCategories] = useState([]);
-  const [RegularProducts, setRegularProducts] = useState([]);
-  const [FlashSaleProducts, setFlashSaleProduct] = useState([]);
+  const [Categories, setCategories] = useState<ICategory[] | []>([]);
+  const [RegularProducts, setRegularProducts] = useState<Iproduct[] | []>([]);
+  const [FlashSaleProducts, setFlashSaleProduct] = useState<Iproduct[] | []>([]);
 
   /* category fetch data */
   const category_Fetch_Data = useCallback(async () => {

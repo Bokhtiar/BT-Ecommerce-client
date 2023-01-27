@@ -17,13 +17,25 @@ interface IOrder {
     note: string;
 }
 
+type ProductProps = {
+    name: string;
+    image: string;
+    sale_price: any;
+}
+interface ICart {
+    _id: string;
+    product: ProductProps | null;
+    quantity: any;
+}
+ 
+
 const OrderShow: React.FC = (): JSX.Element => {
     const router = useRouter();
     let {id}  = router.query;
-    
+     
     /* useState */
     const [order, setOrder] = useState<IOrder | null>();
-    const [carts, setCart] = useState([])
+    const [carts, setCart] = useState<ICart[] | []>([])
 
     /* data fetch */
     const fetch_data_order_show = useCallback(async () => {

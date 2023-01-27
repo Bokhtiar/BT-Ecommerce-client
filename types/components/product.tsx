@@ -1,13 +1,13 @@
-export interface product {
+export interface Iproduct {
   name: string;
   sale_price: number;
   image: string;
   _id: string;
   description: string;
-  category: category | null;
+  category: Icategory | null;
 }
 
-type category = {
+type Icategory = {
   name:string;
   icon :string;
 }
