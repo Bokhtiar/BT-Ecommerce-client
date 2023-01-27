@@ -3,12 +3,12 @@ import { getToken } from "../utils/helpers";
 //import { getToken } from "utils/helper";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT || "https://bt-ecommerce.onrender.com";
-
+//http://localhost:4000/ 
 /* Publica/Common request config */
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const publicRequest = axios.create({
-  baseURL: apiUrl,
+  baseURL: apiUrl, 
 });
 
 const privateRequest = axios.create({

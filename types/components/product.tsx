@@ -8,6 +8,7 @@ export interface Iproduct {
 }
 
 type Icategory = {
+  id:string;
   name:string;
   icon :string;
 }
