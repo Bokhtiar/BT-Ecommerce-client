@@ -9,7 +9,7 @@ type OrderDataTypes = {
     payment_number: number;
     payment_txid : string
 }
-
+                   
 export const OrderStoreNetwork = async(data: OrderDataTypes) => {
     return await privateRequest.post(`/api/v1/order`, data);
 }

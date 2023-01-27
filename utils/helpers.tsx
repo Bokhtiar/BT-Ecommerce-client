@@ -60,8 +60,6 @@ export const networkErrorHandeller = (error: any) => {
     }else if(error.response.data.message === "Authorization token not found."){
       console.log("auth",error.response.data.message);
       removeToken()
-      const router = useRouter();
-      router.push("/auth/login");
       return Toastify.Error("Authorization token not found.");
     }
     return Toastify.Error("Something going wrong, Try again.");
