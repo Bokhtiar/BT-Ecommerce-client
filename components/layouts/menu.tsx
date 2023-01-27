@@ -70,6 +70,7 @@ const Menu: React.FC = (): JSX.Element => {
                                                 href={`/product/category/${category._id}`}
                                                 className="flex px-2 py-2 hover:bg-gray-100 gap-2 "
                                             >
+                                                
                                                 <img src={category.icon} className="h-6 w-6 rounded rounded-full" alt="" />
                                                 <span>{category.name}</span>
                                             </Link>
