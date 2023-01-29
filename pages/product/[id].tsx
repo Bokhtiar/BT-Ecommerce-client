@@ -1,46 +1,39 @@
-import React from 'react'
-import Header from '../../components/layouts/header'
-import Footer from '../../components/layouts/footer'
-import Bradcrumbs from '../../components/bradcrumbs'
-import Product from '../../components/product'
-import { Iproduct } from '../../types/components/product'
+import React from "react";
+import Header from "../../components/layouts/header";
+import Footer from "../../components/layouts/footer";
+import Bradcrumbs from "../../components/bradcrumbs";
+import Product from "../../components/product";
+import { Iproduct } from "../../types/components/product";
 import { useCallback, useEffect, useState } from "react";
-import { productShow } from '../../network/product.network'
+import { productShow } from "../../network/product.network";
 import { useRouter } from "next/router";
-import { networkErrorHandeller } from '../../utils/helpers'
-import { CategoryProductNetwork, ReletedProductNetwork } from '../../network/Category.network'
+import { networkErrorHandeller } from "../../utils/helpers";
+import { ReletedProductNetwork } from "../../network/Category.network";
 
 export default function View() {
-
   const router = useRouter();
   const { id } = router.query;
-  const [releteProduct, setReletedProduct] = useState<Iproduct[] | []>([])
-  const [product, setProduct] = useState<Iproduct | null>(null)
-  /* useCall back */
-  const product_Show_fetch_data = useCallback(async () => {
-    const response = await productShow({ id })
-    if (response && response.status === 200) {
-      setProduct(response.data.data)
-    }
-  }, [id])
+  const [releteProduct, setReletedProduct] = useState<Iproduct[] | []>([]);
+  const [product, setProduct] = useState<Iproduct | null>(null);
 
-  /* releted product fetch data */
-  const reletedProductFetchData = useCallback(async () => {
+  /* useCall back */
+  const fetchData = useCallback(async () => {
     try {
-      const response = await ReletedProductNetwork({ id })
+      const response = await productShow({ id });
+      const reletedProductResponse = await ReletedProductNetwork({ id });
       if (response && response.status === 200) {
-        setReletedProduct(response.data.data)
+        setProduct(response.data.data);
+        setReletedProduct(reletedProductResponse.data.data);
       }
     } catch (error: any) {
-      networkErrorHandeller(error)
+      networkErrorHandeller(error);
     }
-  }, [releteProduct])
+  }, [id]);
 
   /* useEffect */
   useEffect(() => {
-    product_Show_fetch_data()
-    reletedProductFetchData()
-  }, [product_Show_fetch_data])
+    fetchData();
+  }, [fetchData]);
 
   return (
     <>
@@ -135,9 +128,9 @@ export default function View() {
             {/* shor description */}
             <div className="my-3 w-8/12">
               <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the standard dummy
-                text ever since the 1500s,
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the standard dummy text ever
+                since the 1500s,
               </p>
             </div>
 
@@ -165,11 +158,11 @@ export default function View() {
           <h2 className="uppercase font-bold text-xl">Releted products</h2>
           <div className="container">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {
-                releteProduct.map((product, i) => {
-                  return <Product key={i} {...product} />
-                })
-              }
+              {releteProduct
+                ? releteProduct.map((product, i) => {
+                    return <Product key={i} {...product} />;
+                  })
+                : null}
             </div>
           </div>
         </div>

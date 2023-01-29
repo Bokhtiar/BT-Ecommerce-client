@@ -11,6 +11,7 @@ import { Iproduct } from "../types/components/product";
 import Image from "next/image";
 
 export default function Home() {
+  const [isLoading, setLoading] = useState<boolean>(true);
   const [Categories, setCategories] = useState<ICategory[] | []>([]);
   const [RegularProducts, setRegularProducts] = useState<Iproduct[] | []>([]);
   const [FlashSaleProducts, setFlashSaleProduct] = useState<Iproduct[] | []>(
@@ -24,8 +25,10 @@ export default function Home() {
       if (response && response.status === 200) {
         setCategories(response.data.data);
       }
+      setLoading(false);
     } catch (error) {
       if (error) {
+        setLoading(false);
         console.log(error);
       }
     }
@@ -38,8 +41,10 @@ export default function Home() {
       if (response && response.status === 200) {
         setRegularProducts(response.data.data);
       }
+      setLoading(false);
     } catch (error: any) {
       if (error) {
+        setLoading(false);
         console.log(error);
       }
     }
@@ -73,12 +78,11 @@ export default function Home() {
         style={{
           backgroundImage: "url('./banner.jpg')",
           height: "md:70vh 10vh",
-          width:"100%",
+          width: "100%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
-
         <div className="container">
           <div className="">
             <h2 className="text-4xl text-gray-600 mb-4 my-auto">
