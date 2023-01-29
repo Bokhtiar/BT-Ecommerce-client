@@ -2,8 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 import { getToken } from "../utils/helpers";
 //import { getToken } from "utils/helper";
 
-const apiUrl = process.env.REACT_APP_API_ENDPOINT || "http://localhost:4000";
-//http://localhost:4000
+const apiUrl = process.env.REACT_APP_API_ENDPOINT || "https://bt-ecommerce.onrender.com";
+//http://localhost:4000/ 
 /* Publica/Common request config */
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
@@ -37,7 +37,8 @@ privateRequest.interceptors.request.use(
       config.headers = {};
     }
     if (token) {
-      // config.headers["Authorization"] = "Bearer " + token || "";
+      let config:any;
+      config.headers["Authorization"] = "Bearer " + token || "";
     }
     return config;
   },
