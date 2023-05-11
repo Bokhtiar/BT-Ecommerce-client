@@ -12,7 +12,7 @@ interface ICart {
   _id: string;
   product: ProductProps | null;
   quantity: any;
-}
+} 
 
 const Cart: React.FC = (): JSX.Element => {
   const [carts, setCart] = useState<ICart[] | []>([])

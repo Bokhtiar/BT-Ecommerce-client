@@ -55,15 +55,6 @@ export const networkErrorHandeller = (error: any) => {
       return Toastify.Error(item.message);
     });
   } else {
-    console.log("something",  error.response.data.message);
-    if(error.response.data.message === "Token expaired."){
-      removeToken()
-      return Toastify.Error("Token expaired.");
-    }else if(error.response.data.message === "Authorization token not found."){
-      console.log("auth",error.response.data.message);
-      removeToken()
-      return Toastify.Error("Authorization token not found.");
-    }
     return Toastify.Error("Something going wrong, Try again.");
   }
 };

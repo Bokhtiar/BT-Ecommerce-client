@@ -3,6 +3,7 @@ import { getToken } from "../utils/helpers";
 //import { getToken } from "utils/helper";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT || "https://bt-ecommerce.onrender.com";
+//process.env.REACT_APP_API_ENDPOINT
 //http://localhost:4000/ 
 /* Publica/Common request config */
 axios.defaults.headers.post["Content-Type"] = "application/json";

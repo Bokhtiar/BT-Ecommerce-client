@@ -13,7 +13,7 @@ export default function Products() {
             const response = await RegularProductIndex();
             if ( response && response.status === 200 ) {
                 setProduct(response.data.data);
-            }
+            } 
         } catch (error: any) {
             if (error) {
                 console.log(error);
