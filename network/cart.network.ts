@@ -6,7 +6,7 @@ export const CartNetwork = async () => {
   // return await privateRequest.post(`/api/v1/cart`)
 
   const instance = axios.create({
-    baseURL: "http://localhost:4000" || "https://bt-ecommerce.onrender.com",
+    baseURL:  "https://bt-ecommerce.onrender.com",
     timeout: 1000,
     headers: { Authorization: "Bearer " + (await getToken()) },
   });
@@ -18,7 +18,7 @@ export const CartNetworkStore = async ({ _id }: { _id: string }) => {
   // return await privateRequest.post(`/api/v1/cart/${_id}`)
 
   const token = await getToken();
-    const baseUrl =`http://localhost:4000/api/v1/cart/${_id}` || `https://bt-ecommerce.onrender.com/api/v1/cart/${_id}`
+    const baseUrl = `https://bt-ecommerce.onrender.com/api/v1/cart/${_id}`
   return axios.post(
     baseUrl,
     {
